@@ -16,10 +16,10 @@ public class FilmDaoImpl implements IFilmDao {
 	public boolean deleteByPrimaryKey(int filmId) {
 		boolean result = false;
 		deleteInventory(filmId);
-		DBUtil.delet(SQLUitl.DELETE_FILM_CATEGORY, filmId);
-		DBUtil.delet(SQLUitl.DELETE_FILM_TEXT, filmId);
-		DBUtil.delet(SQLUitl.DELETE_FILM_ACTOR, filmId);
-		result = DBUtil.delet(SQLUitl.FILM_DELETE, filmId);
+		DBUtil.delete(SQLUitl.DELETE_FILM_CATEGORY, filmId);
+		DBUtil.delete(SQLUitl.DELETE_FILM_TEXT, filmId);
+		DBUtil.delete(SQLUitl.DELETE_FILM_ACTOR, filmId);
+		result = DBUtil.delete(SQLUitl.FILM_DELETE, filmId);
 		System.out.println(result);
 		try {
 			DBUtil.close();
@@ -40,7 +40,7 @@ public class FilmDaoImpl implements IFilmDao {
 				sql.append(inventory_id+",");
 			}
 			sql.delete(sql.length()-1, sql.length());
-			DBUtil.delet(SQLUitl.DELETE_RENTAL, sql.toString());
+			DBUtil.delete(SQLUitl.DELETE_RENTAL, sql.toString());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

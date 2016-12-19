@@ -78,12 +78,12 @@ public class DBUtil {
 	}
 
 	// 删除（根据表的ID）
-	public static boolean delet(String sql, int id) {
+	public static boolean delete(String sql, int id) {
 		boolean result = false;
 		connection = getConnection();
 		try {
 			ps.setObject(1, id);
-			ps.executeUpdate();
+			result = ps.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -91,7 +91,7 @@ public class DBUtil {
 	}
 
 	// 批量删除（根子查询）
-	public static boolean delet(String sql, String select) {
+	public static boolean delete(String sql, String select) {
 		System.out.println(select);
 		boolean result = false;
 		connection = getConnection();
