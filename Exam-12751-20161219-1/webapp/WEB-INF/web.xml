@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	<display-name>Exam-12751-20161219-1</display-name>
+	<servlet>
+		<servlet-name>customerServlet</servlet-name>
+		<servlet-class>com.exam1.servlet.CustomerServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>customerServlet</servlet-name>
+		<url-pattern>/customer.action</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>filmServlet</servlet-name>
+		<servlet-class>com.exam1.servlet.FilmServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>filmServlet</servlet-name>
+		<url-pattern>/film.action</url-pattern>
+	</servlet-mapping>
+	
+	<filter>
+		<filter-name>userLogin</filter-name>
+		<filter-class>com.exam1.filter.UserFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>userLogin</filter-name>
+		<servlet-name>filmServlet</servlet-name>
+	</filter-mapping>
+	
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>

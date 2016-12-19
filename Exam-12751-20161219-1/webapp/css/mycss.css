@@ -1,0 +1,76 @@
+@CHARSET "UTF-8";
+
+* {
+	padding: 0px;
+	margin: 0px;
+}
+
+a {
+	text-decoration: none;
+}
+
+#film_list {
+	margin-left: auto;
+	margin-right: auto;
+	width: 800px;
+}
+
+#list_ul{
+	float: left;
+	border: 1px solid #ececec;
+	width: 800px;
+	height: auto;
+}
+
+#film_list li {
+	float: left;
+	height: 30px;
+	list-style: none;
+	text-align: center;
+	line-height: 28px;
+}
+
+.list_head {
+	background-color: #fea900;
+	color: #ffffff;
+	margin-left: 1px;
+	width: 159px;
+}
+
+.list_body {
+	border: 1px solid #ececec;
+	display: inline;
+	white-space:nowrap;     /*规定段落中的文本不进行换行*/
+    text-overflow:ellipsis;     /*文字段在容器内超宽时，截断该文字段并且续以省略号*/
+    -o-text-overflow:ellipsis;
+    overflow: hidden;
+    width: 158px;
+}
+
+#update_film {
+	width: 50px;
+	height: 25px;
+	color: #ffffff;
+	font-size: 14px;
+	text-align: center;
+	background-color: #fea900;
+}
+
+#delete_film {
+	width: 50px;
+	text-align: center;
+	height: 25px;
+	font-size: 14px;
+	color: #ffffff;
+	background-color: #ff0080;
+}
+
+#page_ul{
+	float: left;
+	width: 800px;
+	height: auto;
+}
+
+.page_li{
+	float: right;
+}
