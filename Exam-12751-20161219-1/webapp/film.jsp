@@ -29,7 +29,27 @@
 				data:{'num':num,'code':5}
 			}); 
 		});
-	});
+		$('.delete_film').click(function(){
+			var flim_id = $(this).children('input').val();
+			var r = confirm("您将删除 film_id 为 " + flim_id + "的电影，这可能会导致与之相关联的数据表信息被删除，您是否继续？");
+			if (r == true) {
+				$.ajax({
+					type:'post',
+					url:'film.action',
+					data:{'flim_id':flim_id,'code':2},
+					success:function(data){
+						alert("删除成功！");
+						location.href = "film.action?code=4&page="+${pageUtil.getPage()}+"&num=" + ${pageUtil.getSum()};
+					},
+					error:function(){
+						alert("发生未知错误，删除失败！");
+					}
+				}); 
+			} else {
+				alert("取消删除！");
+			}
+		});
+});
 </script>
 </head>
 <body>
@@ -47,9 +67,9 @@
 				<li class="list_body">${item.title}</li>
 				<li class="list_body">${item.description}</li>
 				<li class="list_body">${item.languageName}</li>
-				<li class="list_body"><a id="update_film"
-					href="film.action?code=3&edit=1&flim_id=${item.filmId}">编辑</a> <a id="delete_film"
-					href="film.action?code=2&flim_id=${item.filmId}">删除</a></li>
+				<li class="list_body"><a class="update_film"
+					href="film.action?code=3&edit=1&flim_id=${item.filmId}">编辑</a> <a class="delete_film"
+					href="javascript:;">删除<input type="hidden" name="film_id" value="${item.filmId}" /></a></li>
 			</c:forEach>
 		</ul>
 

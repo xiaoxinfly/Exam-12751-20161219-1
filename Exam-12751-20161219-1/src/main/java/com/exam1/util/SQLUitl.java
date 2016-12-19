@@ -19,8 +19,6 @@ public interface SQLUitl {
 	final String DELETE_FILM_CATEGORY ="delete from film_category where film_id = ?";
 	final String DELETE_FILM_TEXT = "delete from film_text where film_id = ?";
 	final String DELETE_INVENTORY ="delete from inventory where film_id = ?";
-	final String DELETE_SELECT_INVENTORY = "select inventory_id from inventory where film_id = ?";
-	final String DELETE_SELECT_RENTAL = "select rental_id from rental where inventory_id = ?";
-	final String DELETE_RENTAL = "delete from rental where inventory_id in(?)";
+	final String DELETE_RENTAL = "delete from rental where inventory_id in(select inventory_id from inventory where film_id = ?)";
 	
 }

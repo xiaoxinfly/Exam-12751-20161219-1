@@ -153,10 +153,9 @@ public class FilmServlet extends HttpServlet {
 	private void deleteFilm() throws IOException {
 		String filmId = this.request.getParameter("flim_id");
 		if (this.iFilmService.deleteFilmById(Integer.valueOf(filmId))) {
-			success();
+			this.response.getWriter().println("success");
 		} else {
-			this.response.getWriter().append("fail,当前电影有其他表关联数据");
-			fail();
+			this.response.getWriter().println("fail");
 		}
 	}
 

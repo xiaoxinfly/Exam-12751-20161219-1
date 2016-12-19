@@ -15,35 +15,21 @@ public class FilmDaoImpl implements IFilmDao {
 	@Override
 	public boolean deleteByPrimaryKey(int filmId) {
 		boolean result = false;
-		deleteInventory(filmId);
+		DBUtil.delete(SQLUitl.DELETE_RENTAL, filmId);
+		DBUtil.delete(SQLUitl.DELETE_INVENTORY, filmId);
 		DBUtil.delete(SQLUitl.DELETE_FILM_CATEGORY, filmId);
 		DBUtil.delete(SQLUitl.DELETE_FILM_TEXT, filmId);
 		DBUtil.delete(SQLUitl.DELETE_FILM_ACTOR, filmId);
-		result = DBUtil.delete(SQLUitl.FILM_DELETE, filmId);
-		System.out.println(result);
+		//execute()方法返回false表示执行DDL语句等，并不是错误
+		if(!DBUtil.delete(SQLUitl.FILM_DELETE, filmId)){
+			result = true;
+		}
 		try {
 			DBUtil.close();
 		} catch (SQLException e) {
 			result = false;
 		}
 		return result;
-	}
-
-	private void deleteInventory(int filmId) {
-		List<Object> list = new ArrayList<Object>();
-		list.add(filmId);
-		ResultSet resultSet = DBUtil.query(SQLUitl.DELETE_SELECT_INVENTORY, list);
-		StringBuffer sql = new StringBuffer();
-		try {
-			while (resultSet.next()) {
-				int inventory_id = resultSet.getInt("inventory_id");
-				sql.append(inventory_id+",");
-			}
-			sql.delete(sql.length()-1, sql.length());
-			DBUtil.delete(SQLUitl.DELETE_RENTAL, sql.toString());
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
 	}
 
 	@Override

@@ -3,14 +3,12 @@ package com.exam1.test;
 import java.sql.Connection;
 
 import com.exam1.util.DBUtil;
+import com.exam1.util.SQLUitl;
 
 public class TestDB {
 
 	public static void main(String[] args) {
-		Connection connection = DBUtil.getConnection();
-		if(connection!=null){
-			System.out.println("连接成功");
-		}
+		DBUtil.delete(SQLUitl.FILM_DELETE, 1002);
 	}
 
 }

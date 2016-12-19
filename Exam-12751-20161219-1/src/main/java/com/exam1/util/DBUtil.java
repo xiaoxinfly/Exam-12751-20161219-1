@@ -64,9 +64,9 @@ public class DBUtil {
 	// 更新或者添加
 	public static int update(String sql, List<Object> list) {
 		int result = 0;
-		connection = getConnection();
+		Connection conn= getConnection();
 		try {
-			ps = connection.prepareStatement(sql);
+			ps = conn.prepareStatement(sql);
 			for (int i = 1; i <= list.size(); i++) {
 				ps.setObject(i, list.get(i - 1));
 			}
@@ -82,21 +82,8 @@ public class DBUtil {
 		boolean result = false;
 		connection = getConnection();
 		try {
+			ps = connection.prepareStatement(sql);
 			ps.setObject(1, id);
-			result = ps.execute();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return result;
-	}
-
-	// 批量删除（根子查询）
-	public static boolean delete(String sql, String select) {
-		System.out.println(select);
-		boolean result = false;
-		connection = getConnection();
-		try {
-			ps.setObject(1, select);
 			result = ps.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
